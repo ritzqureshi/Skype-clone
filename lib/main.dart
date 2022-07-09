@@ -10,10 +10,11 @@ import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/search_screen.dart';
 
-void main()async{ 
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  return  runApp(const MyApp()); } 
+  return runApp(const MyApp());
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -23,10 +24,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-  
   final AuthMethods _authMethods = AuthMethods();
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -35,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => UserProvider()),
       ],
       child: MaterialApp(
-        title: "Skype Clone",
+        title: "CogentsApp",
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {

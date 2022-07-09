@@ -1,7 +1,7 @@
-const String messageCollection = "SCmessages";
-const String usersCollection = "SCusers";
-const String callCollection = "SCcall";
-const String contactsCOLLECTION = "SCcontacts";
+const String messageCollection = "cogentAppmessages";
+const String usersCollection = "cogentAppusers";
+const String callCollection = "cogentAppcall";
+const String contactsCOLLECTION = "cogentAppcontacts";
 
 const String timestampField = "timestamp";
 const String emailField = "email";

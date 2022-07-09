@@ -20,19 +20,21 @@ class LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: UniversalVariables.blackColor,
-      body: Stack(
-        children: [
-          Center(
-            child: loginButton(),
-          ),
-          isLoginPressed
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Container()
-        ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: UniversalVariables.blueColor,
+        body: Stack(
+          children: [
+            Center(
+              child: loginButton(),
+            ),
+            isLoginPressed
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Container()
+          ],
+        ),
       ),
     );
   }
@@ -40,13 +42,19 @@ class LoginScreenState extends State<LoginScreen> {
   Widget loginButton() {
     return Shimmer.fromColors(
       baseColor: Colors.white,
-      highlightColor: UniversalVariables.senderColor,
+      highlightColor: const Color.fromARGB(255, 190, 109, 47),
       child: TextButton(
         child: const Text(
           "LOGIN",
           style: TextStyle(
               fontSize: 35, fontWeight: FontWeight.w900, letterSpacing: 1.2),
         ),
+        // onPressed: () {
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) {
+        //     return const HomeScreen();
+        //   }));
+        // }
+
         onPressed: () => performLogin(),
       ),
     );

@@ -96,7 +96,7 @@ class ChatMethods {
         .add(map);
   }
 
-  Stream<QuerySnapshot> fetchContacts({required String userId}) =>
+  Stream<QuerySnapshot> fetchContacts({required String? userId}) =>
       _userCollection.doc(userId).collection(contactsCOLLECTION).snapshots();
 
   Stream<QuerySnapshot> fetchLastMessageBetween({

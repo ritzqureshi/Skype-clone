@@ -73,6 +73,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   pickImage({required ImageSource source}) async {
+    // print("hhhhelo");
     File selectedImage = await Utils.pickImage(source: source);
     _firebaseMethods.uploadImage(selectedImage, widget.receiver.uid!,
         _currentUserId, _imageUploadProvider);
@@ -360,16 +361,16 @@ class _ChatScreenState extends State<ChatScreen> {
               ],
             ),
           ),
-          if (!_isWriting)
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Icon(Icons.record_voice_over),
-            ),
-          if (!_isWriting)
-            GestureDetector(
-              child: const Icon(Icons.camera_alt),
-              onTap: () => pickImage(source: ImageSource.camera),
-            ),
+          // if (!_isWriting)
+          //   const Padding(
+          //     padding: EdgeInsets.symmetric(horizontal: 10),
+          //     child: Icon(Icons.record_voice_over),
+          //   ),
+          // if (!_isWriting)
+          //   GestureDetector(
+          //     child: const Icon(Icons.camera_alt),
+          //     onTap: () => pickImage(source: ImageSource.camera),
+          //   ),
           if (_isWriting)
             Container(
               margin: const EdgeInsets.only(left: 10),
@@ -397,7 +398,7 @@ class _ChatScreenState extends State<ChatScreen> {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context)),
       centerTitle: true,
-      title: Text(widget.receiver.name ?? ""),
+      title: Text(widget.receiver.name ?? "UserName"),
       actions: [
         IconButton(
             onPressed: () {

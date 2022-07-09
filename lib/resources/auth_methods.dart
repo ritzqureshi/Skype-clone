@@ -16,8 +16,15 @@ class AuthMethods {
   static final CollectionReference _userCollection =
       _firestore.collection(usersCollection);
 
+  // void inputData() {
+  //   final User user = _auth.currentUser()!;
+  //   final uid = user.uid;
+  //   // here you write the codes to input the data into firestore
+  //   print(uid);
+  // }
+
   Future<User> getCurrentUser() async {
-    return _auth.currentUser!;
+    return _auth.currentUser()!;
   }
 
   Future<User> getUserDetails() async {
@@ -100,7 +107,7 @@ class AuthMethods {
     }
   }
 
-  void setUserState({required String userId, required UserState userState}) {
+  void setUserState({required String? userId, required UserState userState}) {
     int stateNum = Utils.stateToNum(userState);
 
     _userCollection.doc(userId).update({

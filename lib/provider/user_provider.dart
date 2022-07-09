@@ -10,7 +10,7 @@ class UserProvider with ChangeNotifier {
   Person get getUser => _user;
 
   void refreshUser() async {
-    Person user = await _firebaseMethods.getUserDetails();
+    Person? user = await _firebaseMethods.getUserDetails();
     _user = user;
     notifyListeners();
   }

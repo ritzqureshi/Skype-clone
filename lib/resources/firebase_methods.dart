@@ -19,7 +19,7 @@ class FirebaseMethods {
   Person user = Person();
 
   Future<User> getCurrentUser() async {
-    return _auth.currentUser!;
+    return _auth.currentUser()!;
   }
 
   Future<Person> getUserDetails() async {

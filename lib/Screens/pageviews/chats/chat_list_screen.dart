@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:skype_clone/Screens/login_screen.dart';
 
 import '../../../Screens/pageviews/chats/widgets/new_chat_button.dart';
 import '../../../models/contact.dart';
 import '../../../provider/user_provider.dart';
+import '../../../resources/auth_methods.dart';
 import '../../../resources/chat_methods.dart';
 import '../../../screens/callscreens/pickup/pickup_layout.dart';
 import '../../../utils/universal_variables.dart';
@@ -37,11 +39,29 @@ class ChatListScreen extends StatelessWidget {
                 Icons.more_vert,
                 color: Colors.white,
               ),
-              onPressed: () {},
+              onPressed: () {
+                showMenu(
+                    context: context,
+                    position: RelativeRect.fromLTRB(10, 10, 10, 10),
+                    items: [
+                      PopupMenuItem<String>(
+                        child: const Text('Sign Out'),
+                        value: '1',
+                        onTap: () async {
+                          await AuthMethods().signOut();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginScreen()),
+                          );
+                        },
+                      ),
+                    ]);
+              },
             ),
           ],
         ),
-        floatingActionButton: const NewChatButton(),
+        // floatingActionButton: const NewChatButton(),
         body: ChatListContainer(),
       ),
     );
@@ -59,7 +79,7 @@ class ChatListContainer extends StatelessWidget {
 
     return StreamBuilder<QuerySnapshot>(
         stream: _chatMethods.fetchContacts(
-          userId: userProvider.getUser.uid!,
+          userId: userProvider.getUser.uid,
         ),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -68,7 +88,7 @@ class ChatListContainer extends StatelessWidget {
               return const QuietBox(
                 heading: "This is where all the contacts are listed",
                 subtitle:
-                    "Search for your friends and family to start calling or chatting with them",
+                    "Search for your friends and colleague to start calling or chatting with them",
               );
             }
             return ListView.builder(
