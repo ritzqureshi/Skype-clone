@@ -58,11 +58,11 @@ class _CallScreenState extends State<CallScreen> {
     _addAgoraEventHandlers();
     await _engine.setParameters(
         '''{"che.video.lowBitRateStreamParameter":{"width":320,"height":180,"frameRate":15,"bitRate":140}}''');
-    await _engine.joinChannel(token, widget.call.callerId, null, 0);
+    await _engine.joinChannel(token, widget.call.callerId ?? '', null, 0);
   }
 
   addPostFrameCallback() {
-    SchedulerBinding.instance?.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
       userProvider = Provider.of<UserProvider>(context, listen: false);
 
       callStreamSubscription = callMethods

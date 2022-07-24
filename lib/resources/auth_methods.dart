@@ -24,7 +24,7 @@ class AuthMethods {
   // }
 
   Future<User> getCurrentUser() async {
-    return _auth.currentUser()!;
+    return _auth.currentUser!;
   }
 
   Future<User> getUserDetails() async {
